@@ -1,0 +1,3 @@
+twilio==6.63.2
+pytezos==3.2.11
+PyYAML==5.4.1
