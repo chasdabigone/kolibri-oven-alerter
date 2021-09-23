@@ -2,6 +2,7 @@ Tezos Node: https://rpc.tzbeta.net
 Oven Address: KTXXXXXXXXXXXXXXXXXXXXXX
 Alert Percentage: 250
 Refresh Rate (seconds): 600
+Continuous Alert: True
 
 Twilio SID: 
 Twilio Auth Token: 

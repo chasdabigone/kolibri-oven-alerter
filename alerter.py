@@ -61,14 +61,21 @@ def send_alert():
                          to=config['Recipient Phone Number']
                      )
 
-while ovenRatio > alertRatio:
-    
-    get_oven()
-    print ("oven ratio is " + str(round(ovenRatio*100)) + "% ... safe. Refreshing in " + str(config['Refresh Rate (seconds)']) + " seconds")
-    time.sleep(config['Refresh Rate (seconds)'])
-else:
-    print ("oven ratio is under alert ratio. ALERTING")
-    send_alert()
+def oven_loop():
+    while ovenRatio > alertRatio:
+        
+        get_oven()
+        print ("oven ratio is " + str(round(ovenRatio*100)) + "% ... safe. Refreshing in " + str(config['Refresh Rate (seconds)']) + " seconds")
+        time.sleep(config['Refresh Rate (seconds)'])
+    else:
+        print ("oven ratio is under alert ratio. ALERTING")
+        send_alert()
+        if config['Continuous Alert'] is True:
+            print ("refreshing in " + str(config['Refresh Rate (seconds)']) + " seconds")
+            time.sleep(config['Refresh Rate (seconds)'])
+            oven_loop()
+
+oven_loop()
 
 
 
